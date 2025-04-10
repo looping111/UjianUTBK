@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.DiffUtil
 import com.example.ujianutbk.R
 import com.example.ujianutbk.data.Student
 
@@ -38,7 +38,7 @@ class StudentAdapter(
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Student>() {
-        override fun areItemsTheSame(oldItem: Student, newItem: Student) = oldItem.nis == newItem.nis
-        override fun areContentsTheSame(oldItem: Student, newItem: Student) = oldItem == newItem
+        override fun areItemsTheSame(old: Student, new: Student) = old.nis == new.nis
+        override fun areContentsTheSame(old: Student, new: Student) = old == new
     }
 }

@@ -1,13 +1,12 @@
 package com.example.ujianutbk.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.ujianutbk.data.Student
 import com.example.ujianutbk.repository.StudentRepository
 import kotlinx.coroutines.launch
 
-class StudentViewModel(private val repo: StudentRepository) : androidx.lifecycle.ViewModel() {
-    val allStudents = repo.allStudents
+class StudentViewModel(private val repo: StudentRepository) : ViewModel() {
+    val allStudents: LiveData<List<Student>> = repo.allStudents
 
     fun insert(student: Student) = viewModelScope.launch {
         repo.insert(student)
@@ -21,5 +20,5 @@ class StudentViewModel(private val repo: StudentRepository) : androidx.lifecycle
         repo.delete(student)
     }
 
-    fun search(query: String) = repo.search(query)
+    fun search(query: String): LiveData<List<Student>> = repo.search(query)
 }

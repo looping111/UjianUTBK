@@ -8,9 +8,6 @@ interface StudentDao {
     @Query("SELECT * FROM student ORDER BY fullName ASC")
     fun getAll(): LiveData<List<Student>>
 
-    @Query("SELECT * FROM student WHERE fullName LIKE :query OR nis LIKE :query")
-    fun search(query: String): LiveData<List<Student>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(student: Student)
 
@@ -19,4 +16,7 @@ interface StudentDao {
 
     @Delete
     suspend fun delete(student: Student)
+
+    @Query("SELECT * FROM student WHERE fullName LIKE :query OR nis LIKE :query")
+    fun search(query: String): LiveData<List<Student>>
 }

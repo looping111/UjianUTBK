@@ -8,4 +8,3 @@ data class Student(
     @PrimaryKey val nis: String,
     val fullName: String
 )
-

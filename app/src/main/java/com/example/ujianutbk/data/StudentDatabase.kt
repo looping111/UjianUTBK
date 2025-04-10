@@ -10,8 +10,7 @@ abstract class StudentDatabase : RoomDatabase() {
     abstract fun studentDao(): StudentDao
 
     companion object {
-        @Volatile
-        private var INSTANCE: StudentDatabase? = null
+        @Volatile private var INSTANCE: StudentDatabase? = null
 
         fun getInstance(context: Context): StudentDatabase =
             INSTANCE ?: synchronized(this) {
